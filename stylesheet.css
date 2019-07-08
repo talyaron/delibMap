@@ -1,0 +1,54 @@
+#interactionBox{
+
+  position: fixed;
+  left: 50%;
+  top:50%;
+  /*  height: 80%;*/
+  width: 50%;
+  transform: translate(-50%, -50%);
+
+  background-color: white;
+  border: 1px solid #c1c1c1;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px rgba(128, 128, 128, 0.61);
+
+  padding: 12px;
+  color: hsla(120, 100%, 25%, 0.88);
+  /*  overflow-y:scroll;*/
+
+}
+
+#title{
+  font-weight:bold;
+}
+
+.clickable:hover{
+  cursor: pointer;
+}
+
+#login{
+  position: fixed;
+  top:0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+  background: #ff0000;
+
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row /* works with row or column */
+    flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  color: hsl(120,100%,50%)
+
+
+}
+
+.voteIcons{
+  font-size: 2em;
+  margin: 10px;
+}

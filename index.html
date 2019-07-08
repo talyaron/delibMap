@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Delib-Maps </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5"/>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" href="stylesheet.css" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+    <script src="modules/jquery-3.1.1.js"></script>
+
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+
+    <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>-->
+
+    <script>
+
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCsY5N3Saxk1fzEl4iKUwymz3bCMbNisq0",
+        authDomain: "learningtaltests.firebaseapp.com",
+        databaseURL: "https://learningtaltests.firebaseio.com",
+        storageBucket: "learningtaltests.appspot.com",
+        messagingSenderId: "553731011826"
+      };
+      firebase.initializeApp(config);
+      DB = firebase.database().ref();
+
+      function loadNetwork() {
+        Promise.all([getEdgesFromDB() ,getNodesFromDB()]).then(function() {
+          initNetwork('mynetwork','1300px','650px',221980);
+          listenToNodes();
+          listenToEdges();
+        });
+      }
+    </script>
+
+    <script src="modules/vis4.17.js"></script>
+    <link rel="stylesheet" type="text/css" href="modules/vis.min.css">
+
+  </head>
+  <body onload="loadNetwork()" dir="rtl">
+
+    <div id="mynetwork" width="900px" height="500px"></div>
+
+    <div id="interactionBox" hidden="true">
+      <div id="title" class="clickable" contenteditable="true">Title</div>
+      <div id="description" class="clickable" contenteditable="true">Description</div>
+
+      <form id="typeOfEntityForm">
+        <label>Type of node</label>
+        <p>
+          <input name="group1" type="radio" id="option" checked/>
+          <label for="option">Option</label>
+        </p>
+        <p>
+          <input name="group1" type="radio" id="implication" checked/>
+          <label for="implication">Implication</label>
+        </p>
+        <p>
+          <input name="group1" type="radio" id="question" />
+          <label for="question">Question</label>
+        </p>
+        <p>
+          <input name="group1" type="radio" id="goal" />
+          <label for="goal">Goal</label>
+        </p>
+      </form>
+
+      <div class="vote">
+        <i id="voteDown" class="material-icons clickable voteIcons" onclick='voteAssign(-1)'>thumb_down</i>
+        <i id="voteAbs" class="material-icons clickable voteIcons" onclick='voteAssign(0)'>indeterminate_check_box</i>
+        <i id="voteUp" class="material-icons clickable voteIcons" onclick='voteAssign(1)'>thumb_up</i>
+      </div>
+      <a class="waves-effect waves-light btn" onclick="setDataFromForm()">OK</a>
+      <a class="waves-effect waves-light btn" onclick="closeForm()">Cancel</a>
+    </div>
+
+    <div id="login">
+      <a class="waves-effect waves-light btn-large" onclick="login()">Login</a>
+    </div>
+
+    <!--    get files -->
+    <script type="text/jscript" src="js/app.js"></script>
+    <script type="text/jscript" src="js/login.js"></script>
+    <script type="text/jscript" src="js/vote.js"></script>
+    <script type="text/jscript" src="js/addUOS.js"></script>
+    <script type="text/jscript" src="js/genralFunctions.js"></script>
+    <script type="text/jscript" src="js/dbHandlers/setDataToDB.js"></script>
+    <script type="text/jscript" src="js/dbHandlers/getDataFromDB.js"></script>
+
+
+  </body>
+</html>
